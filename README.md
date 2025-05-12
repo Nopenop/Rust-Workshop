@@ -51,11 +51,11 @@ To participate in the workshop, you need to install Rust, a code editor, and the
      rustc --version
      cargo --version
      ```
-### Post-Installation
+### Getting Started
 - Test your setup by creating a new Rust project:
   ```bash
-  cargo new test_project
-  cd test_project
+  cargo new my_project
+  cd my_project
   cargo run
   ```
 - You should expect to see "Hello World on your Console"
