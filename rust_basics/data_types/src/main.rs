@@ -1,53 +1,46 @@
+use std::env;
+mod scalar;
+mod tuple;
+use clap::Parser;
+
+// Scalar
+//
+// fn main() {
+//     // list of all arguments passed to the binary
+//     let args: Vec<String> = env::args().collect();
+//     // first argument
+//     // TODO allow for handling of arguments
+//     let query = args.get(1).expect("Expected first argument").to_lowercase();
+//     if query == "scalar" {
+//         println!("It worked");
+//     } else if query == "vector" {
+//         println!("vector");
+//     } else if query == "string" {
+//         println!("string");
+//     } else if query == "tuple" {
+//         println!("tuple");
+//     } else {
+//         panic!("Expected first argument of either scalar, vector, string, or tuple");
+//     }
+// }
+
+/// Simple program to greet a person
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+struct Args {
+    /// Name of the person to greet
+    #[arg(short, long)]
+    name: String,
+
+    /// Number of times to greet
+    #[arg(short, long, default_value_t = 1)]
+    count: u8,
+}
+
 fn main() {
-    let x = 2.0; // f64
-    println!("float64 x = {}", x);
+    let args = Args::parse();
 
-    let y: f32 = 3.0; // f32
-    println!("float32 y = {}", y);
-
-    // addition
-    let sum = 5 + 10;
-    println!("{}", sum);
-
-    // subtraction
-    let difference = 15 + 10;
-    println!("{}", difference);
-
-    // multiplication
-    let product = 3 * 4;
-    println!("{}", product);
-
-    // division
-    // println!("{}",// );
-    let quotient = 56.7 / 32.2;
-    println!("{}", quotient);
-    let truncated = -5 / 3; // Results in -1
-    println!("{}", truncated);
-
-    // remainder
-    let remainder = 43 % 5;
-    println!("{}", remainder);
-
-    // booleans
-    let t = true;
-    println!("{}", t);
-    let f = false;
-    println!("{}", f);
-
-    // characters (either utf8 or u8)
-    let c = 'z';
-    println!("{}", c);
-    let z: char = 'ℤ';
-    println!("{}", z);
-    let heart_eyed_cat = '😻';
-    println!("{}", heart_eyed_cat);
-
-    // Tuple type
-    let tup: (i32, f64, u8) = (500, 6.4, 1);
-    println!("{:#?}", tup);
-    let (a, _, _) = tup;
-    println!("Value of a is {}", a);
-    println!("Value 1 is {}", tup.1);
-
-    // array types
+    for _ in 0..args.count {
+        println!("Hello {}!", args.name);
+    }
 }

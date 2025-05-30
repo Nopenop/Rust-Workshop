@@ -91,6 +91,19 @@ This repository contains all workshop materials, organized as follows:
 
 ---
 
+## Rust project structure
+
+```mermaid
+graph TD
+    S["src/"] --> Cargo.toml
+    S --> Cargo.lock
+    S --> main.rs
+    S -->|optional| L[lib]
+    L --> mod.rs
+    L --> M[more libraries]
+```
+---
+
 ## Workshop Structure
 
 This workshop is going to be taught over 3 days
